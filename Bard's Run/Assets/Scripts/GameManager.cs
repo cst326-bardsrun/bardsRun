@@ -12,12 +12,12 @@ public class GameManager : MonoBehaviour {
     private float score;
     private float timeBetweenPlatforms;
     private float spawnPlatTime;
-
+    
 
     //Values given to us through the main menu
     public float tempo;
     public float songLength;
-    
+    public string songName;
 
     private void Start()
     {
@@ -52,6 +52,13 @@ public class GameManager : MonoBehaviour {
 
     public float getTempo() {
         return this.tempo;
+    }
+
+    public void SetSong(string songName, float tempo, float songLength)
+    {
+        this.songName = songName;
+        this.tempo = tempo;
+        this.songLength = songLength;
     }
 
 }
