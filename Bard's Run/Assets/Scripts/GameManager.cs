@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -21,21 +22,27 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
-        player = FindObjectOfType<Player>().gameObject;
-        generator = FindObjectOfType<PlatformGenerator>();
-        timeBetweenPlatforms = tempo / 60f;
-        spawnPlatTime = timeBetweenPlatforms;
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            player = FindObjectOfType<Player>().gameObject;
+            generator = GetComponentInChildren<PlatformGenerator>();
+            timeBetweenPlatforms = tempo / 120f;
+            spawnPlatTime = timeBetweenPlatforms;
+        }
     }
 
     private void Update()
     {
-        score += 50 * Time.deltaTime;
-        spawnPlatTime -= Time.deltaTime;
-
-        if(spawnPlatTime <= 0)
+        if(SceneManager.GetActiveScene().name == "Main")
         {
-            generator.createPlatform();
-            spawnPlatTime = timeBetweenPlatforms;
+            score += 50 * Time.deltaTime;
+            spawnPlatTime -= Time.deltaTime;
+
+            if (spawnPlatTime <= 0)
+            {
+                generator.createPlatform();
+                spawnPlatTime = timeBetweenPlatforms;
+            }
         }
     }
 
@@ -51,14 +58,14 @@ public class GameManager : MonoBehaviour {
     }
 
     public float getTempo() {
-        return this.tempo;
+        return tempo;
     }
 
-    public void SetSong(string songName, float tempo, float songLength)
+    public void SetSong(string newSongName, float newTempo, float newSongLength)
     {
-        this.songName = songName;
-        this.tempo = tempo;
-        this.songLength = songLength;
+        songName = newSongName;
+        tempo = newTempo;
+        songLength = newSongLength;
     }
 
 }

@@ -10,7 +10,7 @@ public class PlatformGenerator : MonoBehaviour {
     private float platformLevel;
 
     private float levelMin = -3f;
-    private float levelMax = 5f;
+    private float levelMax = 2f;
     private float platformWidth;
     
 

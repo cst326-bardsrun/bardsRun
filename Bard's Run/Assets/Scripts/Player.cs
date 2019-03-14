@@ -14,17 +14,24 @@ public class Player : MonoBehaviour {
 	void Start () {
         gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
-        isGrounded = false;
+        isGrounded = true;
 	}
 
     // Update is called once per frame
     void Update() {
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
+            isGrounded = false;
             rb.AddForce(new Vector3(0, jumpPower * 5, 0));
         }
 
-        if(transform.position.x < -5f)
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            Debug.Log(Input.GetAxis("Horizontal"));
+            transform.position += (transform.right * 10 * Input.GetAxis("Horizontal") * Time.deltaTime);
+        }
+
+        if(transform.position.y < -5f)
         {
             gameManager.decrementScore();
         }
@@ -37,17 +44,10 @@ public class Player : MonoBehaviour {
 
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log(other.gameObject.tag);
         if(other.gameObject.tag == "Ground" && !(isGrounded) )
         {
             isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.tag == "Ground" && isGrounded)
-        {
-            isGrounded = false;
         }
     }
 
