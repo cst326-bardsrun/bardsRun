@@ -5,14 +5,14 @@ using UnityEngine.UI;
 using TMPro;
 
 public class EndSceneScore : MonoBehaviour {
-    public TextMeshProUGUI scoreText;
+    public TextMeshPro scoreText;
     GameManager gameManager;
     // Use this for initialization
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        scoreText = GetComponent<TextMeshProUGUI>();
+        scoreText = GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame

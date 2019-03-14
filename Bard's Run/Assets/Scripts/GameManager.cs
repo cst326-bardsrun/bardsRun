@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
             player = GameObject.Find("Player");
 
             generator = GetComponentInChildren<PlatformGenerator>();
-            timeBetweenPlatforms = tempo / 120f;
+            timeBetweenPlatforms = tempo / 100f;
             spawnPlatTime = timeBetweenPlatforms;
 
         }
