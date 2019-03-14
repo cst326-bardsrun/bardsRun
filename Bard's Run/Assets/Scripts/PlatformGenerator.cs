@@ -21,12 +21,13 @@ public class PlatformGenerator : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-    public void createPlatform () { 
-
+    public void createPlatform () {
+        
+        //platform instantiation 
         platformLevel = Random.Range(levelMin, levelMax);
-
         Vector3 newPlatPos = new Vector3(generationPoint.x + platformWidth, generationPoint.y + platformLevel, generationPoint.z);
 
-        Instantiate(thePlatform, newPlatPos, transform.rotation);
-	}
+        GameObject newPlat = Instantiate(thePlatform, newPlatPos, transform.rotation);
+        
+    }
 }

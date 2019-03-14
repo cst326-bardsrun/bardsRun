@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,24 +11,28 @@ public class GameManager : MonoBehaviour {
     private GameObject player;
 
     //GameManager's personal variables
-    private float score;
+    private static float score;
     private float timeBetweenPlatforms;
     private float spawnPlatTime;
     
 
     //Values given to us through the main menu
-    public float tempo;
+    public static float tempo;
     public float songLength;
-    public string songName;
+    public static string songName;
+   
 
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "Main")
         {
-            player = FindObjectOfType<Player>().gameObject;
+            songLength = FindObjectOfType<camAudio>().getAudioLength();
+            player = GameObject.Find("Player");
+
             generator = GetComponentInChildren<PlatformGenerator>();
             timeBetweenPlatforms = tempo / 120f;
             spawnPlatTime = timeBetweenPlatforms;
+
         }
     }
 
@@ -36,8 +41,12 @@ public class GameManager : MonoBehaviour {
         if(SceneManager.GetActiveScene().name == "Main")
         {
             score += 50 * Time.deltaTime;
+            songLength -= Time.deltaTime;
             spawnPlatTime -= Time.deltaTime;
-
+            if(songLength <= 0)
+            {
+                SceneManager.LoadScene("End");
+            }
             if (spawnPlatTime <= 0)
             {
                 generator.createPlatform();
@@ -61,11 +70,21 @@ public class GameManager : MonoBehaviour {
         return tempo;
     }
 
-    public void SetSong(string newSongName, float newTempo, float newSongLength)
+    public void SetSong(string newSongName, float newTempo)
     {
         songName = newSongName;
         tempo = newTempo;
-        songLength = newSongLength;
     }
 
+    public float getScore()
+    {
+        return score;
+    }
+    
+    
+    public string getAudioName()
+    {
+        return songName;
+    }
+    
 }
