@@ -27,7 +27,7 @@ public class PlatformGenerator : MonoBehaviour {
         platformLevel = Random.Range(levelMin, levelMax);
         Vector3 newPlatPos = new Vector3(generationPoint.x + platformWidth, generationPoint.y + platformLevel, generationPoint.z);
 
-        GameObject newPlat = Instantiate(thePlatform, newPlatPos, transform.rotation);
+        Instantiate(thePlatform, newPlatPos, transform.rotation);
         
     }
 }

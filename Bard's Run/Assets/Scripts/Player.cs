@@ -8,11 +8,13 @@ public class Player : MonoBehaviour {
 
     private GameManager gameManager;
     private Rigidbody rb;
+
     [SerializeField] private bool isGrounded;
 
 	// Use this for initialization
 	void Start () {
         gameManager = FindObjectOfType<GameManager>();
+        
         rb = GetComponent<Rigidbody>();
         isGrounded = true;
 	}
@@ -27,8 +29,8 @@ public class Player : MonoBehaviour {
 
         if (Input.GetAxis("Horizontal") != 0)
         {
-            Debug.Log(Input.GetAxis("Horizontal"));
-            transform.position += (transform.right * 10 * Input.GetAxis("Horizontal") * Time.deltaTime);
+            transform.position += transform.right * 10 * Input.GetAxis("Horizontal") * Time.deltaTime;
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -13, 35), transform.position.y, transform.position.z);
         }
 
         if(transform.position.y < -5f)
@@ -53,8 +55,9 @@ public class Player : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "ScoreBox")
-        {
+        { 
             gameManager.addScore(100);
+            other.enabled = false;
         }
     }
 

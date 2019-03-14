@@ -53,11 +53,12 @@ public class GameManager : MonoBehaviour {
                 spawnPlatTime = timeBetweenPlatforms;
             }
         }
+        Debug.Log(score);
     }
 
     public void addScore(float num)
     {
-        score = num;
+        score += num;
     }
 
     public void decrementScore()

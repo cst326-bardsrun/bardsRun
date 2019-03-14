@@ -10,15 +10,16 @@ public class PlatformMovement : MonoBehaviour {
     private GameManager gameManager;
     private Transform platTransform;
 
-    private BoxCollider scoreBox;
+    
 
 	// Use this for initialization
 	void Start () {
         platTransform = gameObject.transform;
         gameManager = FindObjectOfType<GameManager>();
         BeatTempo = gameManager.getTempo() / 60f;
-        scoreBox = GetComponentInChildren<BoxCollider>();
+       
 	}
+
 
     private void FixedUpdate()
     {
