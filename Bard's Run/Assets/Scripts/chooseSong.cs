@@ -15,15 +15,18 @@ public class chooseSong : MonoBehaviour {
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        lepre = GameObject.Find("lepreButton").GetComponent<TextMeshProUGUI>();
+        lepre = GameObject.Find("lepreText").GetComponent<TextMeshProUGUI>();
         tav = GameObject.Find("medievalText").GetComponent<TextMeshProUGUI>();
         medi = GameObject.Find("tavernText").GetComponent<TextMeshProUGUI>();
     }
 
     public void Lepre()
     {
+        // for testing Debug.Log(lepre.text);
+
         gameManager.SetSong(lepre.text,109,108);
         PlayGame();
+
     }
 
     public void medieval()
@@ -31,15 +34,17 @@ public class chooseSong : MonoBehaviour {
 
         gameManager.SetSong(medi.text, 120, 275);
         PlayGame();
+        Debug.Log(medi.text);
     }
 
     public void tavern()
     {
+        // for testing Debug.Log(tav.text);
         gameManager.SetSong(tav.text, 120, 207);
         PlayGame();
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Main");
     }
 }
