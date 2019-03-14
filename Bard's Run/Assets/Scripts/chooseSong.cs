@@ -24,7 +24,7 @@ public class chooseSong : MonoBehaviour {
     {
         // for testing Debug.Log(lepre.text);
 
-        gameManager.SetSong(lepre.text,109,108);
+        gameManager.SetSong(lepre.text,120);
         PlayGame();
 
     }
@@ -32,15 +32,14 @@ public class chooseSong : MonoBehaviour {
     public void medieval()
     {
 
-        gameManager.SetSong(medi.text, 120, 275);
+        gameManager.SetSong(medi.text, 110);
         PlayGame();
-        Debug.Log(medi.text);
     }
 
     public void tavern()
     {
         // for testing Debug.Log(tav.text);
-        gameManager.SetSong(tav.text, 120, 207);
+        gameManager.SetSong(tav.text, 108);
         PlayGame();
     }
     public void PlayGame()

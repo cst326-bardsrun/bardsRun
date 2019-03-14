@@ -4904,7 +4904,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1355553871}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5278,8 +5278,8 @@ RectTransform:
   - {fileID: 1817076137}
   - {fileID: 482574334}
   - {fileID: 1702270562}
-  - {fileID: 1887415851}
   - {fileID: 1169321674}
+  - {fileID: 1887415851}
   m_Father: {fileID: 210894817}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6331,7 +6331,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1355553871}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6652,9 +6652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4224a7550e8c0744ba4895c0d447d031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempo: 0
-  songLength: 0
-  songName: 
 --- !u!4 &2137939837
 Transform:
   m_ObjectHideFlags: 0
